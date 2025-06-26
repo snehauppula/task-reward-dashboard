@@ -1,3 +1,4 @@
+
 import React, { createContext, useContext, useState, useEffect } from 'react';
 
 export interface Task {
@@ -340,20 +341,20 @@ export const TaskProvider: React.FC<{ children: React.ReactNode }> = ({ children
     ) / (completedTasks.length || 1);
 
     // Most productive category
-    const categoryStats = {};
+    const categoryStats: Record<string, number> = {};
     completedTasks.forEach(task => {
       categoryStats[task.category] = (categoryStats[task.category] || 0) + 1;
     });
     const mostProductiveCategory = Object.entries(categoryStats)
-      .sort(([,a], [,b]) => b - a)[0]?.[0] || 'N/A';
+      .sort(([,a], [,b]) => (b as number) - (a as number))[0]?.[0] || 'N/A';
 
     // Task completion by hour (mock data)
-    const hourlyStats = {};
+    const hourlyStats: Record<number, number> = {};
     for (let i = 0; i < 24; i++) {
       hourlyStats[i] = Math.floor(Math.random() * 10);
     }
     const mostProductiveHour = Object.entries(hourlyStats)
-      .sort(([,a], [,b]) => b - a)[0]?.[0] || '9';
+      .sort(([,a], [,b]) => (b as number) - (a as number))[0]?.[0] || '9';
 
     return {
       totalTasks,
