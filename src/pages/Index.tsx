@@ -10,20 +10,25 @@ import { WeeklyGoals } from '@/components/WeeklyGoals';
 import { RewardSystem } from '@/components/RewardSystem';
 import { Dashboard } from '@/components/Dashboard';
 import { TaskProvider } from '@/contexts/TaskContext';
-import { Trophy, Target, Calendar, Star } from 'lucide-react';
+import { Trophy, Target, Calendar, Star, Sparkles } from 'lucide-react';
 
 const Index = () => {
   return (
     <TaskProvider>
-      <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-green-50">
-        <div className="container mx-auto p-6">
+      <div className="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50">
+        <div className="container mx-auto p-6 max-w-7xl">
           {/* Header */}
-          <div className="mb-8">
-            <h1 className="text-4xl font-bold text-gray-900 mb-2">
-              Task Tracker
-            </h1>
-            <p className="text-gray-600 text-lg">
-              Boost your productivity with gamified task management
+          <div className="mb-10 text-center">
+            <div className="flex items-center justify-center gap-3 mb-4">
+              <div className="p-3 bg-gradient-to-r from-blue-500 to-purple-600 rounded-xl shadow-lg">
+                <Sparkles className="w-8 h-8 text-white" />
+              </div>
+              <h1 className="text-5xl font-bold bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-600 bg-clip-text text-transparent">
+                Task Tracker
+              </h1>
+            </div>
+            <p className="text-gray-600 text-xl max-w-2xl mx-auto leading-relaxed">
+              Boost your productivity with gamified task management and achieve your goals with style
             </p>
           </div>
 
@@ -31,39 +36,51 @@ const Index = () => {
           <QuickStats />
 
           {/* Main Content */}
-          <Tabs defaultValue="tasks" className="mt-8">
-            <TabsList className="grid w-full grid-cols-4 mb-6">
-              <TabsTrigger value="tasks" className="flex items-center gap-2">
+          <Tabs defaultValue="tasks" className="mt-12">
+            <TabsList className="grid w-full grid-cols-4 mb-8 h-14 bg-white/80 backdrop-blur-sm shadow-lg border-0 rounded-2xl p-2">
+              <TabsTrigger 
+                value="tasks" 
+                className="flex items-center gap-2 rounded-xl font-medium data-[state=active]:bg-gradient-to-r data-[state=active]:from-blue-500 data-[state=active]:to-blue-600 data-[state=active]:text-white data-[state=active]:shadow-md transition-all duration-200"
+              >
                 <Calendar className="w-4 h-4" />
                 Tasks
               </TabsTrigger>
-              <TabsTrigger value="goals" className="flex items-center gap-2">
+              <TabsTrigger 
+                value="goals" 
+                className="flex items-center gap-2 rounded-xl font-medium data-[state=active]:bg-gradient-to-r data-[state=active]:from-green-500 data-[state=active]:to-green-600 data-[state=active]:text-white data-[state=active]:shadow-md transition-all duration-200"
+              >
                 <Target className="w-4 h-4" />
                 Goals
               </TabsTrigger>
-              <TabsTrigger value="rewards" className="flex items-center gap-2">
+              <TabsTrigger 
+                value="rewards" 
+                className="flex items-center gap-2 rounded-xl font-medium data-[state=active]:bg-gradient-to-r data-[state=active]:from-purple-500 data-[state=active]:to-purple-600 data-[state=active]:text-white data-[state=active]:shadow-md transition-all duration-200"
+              >
                 <Trophy className="w-4 h-4" />
                 Rewards
               </TabsTrigger>
-              <TabsTrigger value="dashboard" className="flex items-center gap-2">
+              <TabsTrigger 
+                value="dashboard" 
+                className="flex items-center gap-2 rounded-xl font-medium data-[state=active]:bg-gradient-to-r data-[state=active]:from-amber-500 data-[state=active]:to-orange-500 data-[state=active]:text-white data-[state=active]:shadow-md transition-all duration-200"
+              >
                 <Star className="w-4 h-4" />
                 Dashboard
               </TabsTrigger>
             </TabsList>
 
-            <TabsContent value="tasks">
+            <TabsContent value="tasks" className="mt-0">
               <TaskManager />
             </TabsContent>
 
-            <TabsContent value="goals">
+            <TabsContent value="goals" className="mt-0">
               <WeeklyGoals />
             </TabsContent>
 
-            <TabsContent value="rewards">
+            <TabsContent value="rewards" className="mt-0">
               <RewardSystem />
             </TabsContent>
 
-            <TabsContent value="dashboard">
+            <TabsContent value="dashboard" className="mt-0">
               <Dashboard />
             </TabsContent>
           </Tabs>
@@ -75,59 +92,73 @@ const Index = () => {
 
 const QuickStats = () => {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-      <Card className="bg-gradient-to-r from-blue-500 to-blue-600 text-white">
-        <CardContent className="p-6">
-          <div className="flex items-center justify-between">
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      <Card className="bg-gradient-to-br from-blue-500 to-blue-600 text-white border-0 shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105">
+        <CardContent className="p-8">
+          <div className="flex items-center justify-between mb-4">
             <div>
-              <p className="text-blue-100">Today's Tasks</p>
-              <p className="text-3xl font-bold">8/12</p>
+              <p className="text-blue-100 text-sm font-medium">Today's Tasks</p>
+              <p className="text-4xl font-bold mt-2">8/12</p>
             </div>
-            <Calendar className="w-8 h-8 text-blue-200" />
+            <div className="p-3 bg-white/20 rounded-xl backdrop-blur-sm">
+              <Calendar className="w-8 h-8 text-white" />
+            </div>
           </div>
-          <Progress value={67} className="mt-3 bg-blue-400" />
+          <Progress value={67} className="mt-4 h-2 bg-blue-400/30" />
+          <p className="text-blue-100 text-xs mt-2 font-medium">67% Complete</p>
         </CardContent>
       </Card>
 
-      <Card className="bg-gradient-to-r from-green-500 to-green-600 text-white">
-        <CardContent className="p-6">
-          <div className="flex items-center justify-between">
+      <Card className="bg-gradient-to-br from-green-500 to-green-600 text-white border-0 shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105">
+        <CardContent className="p-8">
+          <div className="flex items-center justify-between mb-4">
             <div>
-              <p className="text-green-100">Weekly Goals</p>
-              <p className="text-3xl font-bold">2/3</p>
+              <p className="text-green-100 text-sm font-medium">Weekly Goals</p>
+              <p className="text-4xl font-bold mt-2">2/3</p>
             </div>
-            <Target className="w-8 h-8 text-green-200" />
+            <div className="p-3 bg-white/20 rounded-xl backdrop-blur-sm">
+              <Target className="w-8 h-8 text-white" />
+            </div>
           </div>
-          <Progress value={67} className="mt-3 bg-green-400" />
+          <Progress value={67} className="mt-4 h-2 bg-green-400/30" />
+          <p className="text-green-100 text-xs mt-2 font-medium">On Track</p>
         </CardContent>
       </Card>
 
-      <Card className="bg-gradient-to-r from-purple-500 to-purple-600 text-white">
-        <CardContent className="p-6">
-          <div className="flex items-center justify-between">
+      <Card className="bg-gradient-to-br from-purple-500 to-purple-600 text-white border-0 shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105">
+        <CardContent className="p-8">
+          <div className="flex items-center justify-between mb-4">
             <div>
-              <p className="text-purple-100">Total Points</p>
-              <p className="text-3xl font-bold">1,250</p>
+              <p className="text-purple-100 text-sm font-medium">Total Points</p>
+              <p className="text-4xl font-bold mt-2">1,250</p>
             </div>
-            <Star className="w-8 h-8 text-purple-200" />
+            <div className="p-3 bg-white/20 rounded-xl backdrop-blur-sm">
+              <Star className="w-8 h-8 text-white" />
+            </div>
           </div>
-          <div className="mt-3 text-purple-100 text-sm">
-            +85 this week
+          <div className="flex items-center gap-2 mt-4">
+            <div className="px-3 py-1 bg-white/20 rounded-full backdrop-blur-sm">
+              <span className="text-purple-100 text-sm font-medium">+85 this week</span>
+            </div>
           </div>
         </CardContent>
       </Card>
 
-      <Card className="bg-gradient-to-r from-amber-500 to-amber-600 text-white">
-        <CardContent className="p-6">
-          <div className="flex items-center justify-between">
+      <Card className="bg-gradient-to-br from-amber-500 to-orange-500 text-white border-0 shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105">
+        <CardContent className="p-8">
+          <div className="flex items-center justify-between mb-4">
             <div>
-              <p className="text-amber-100">Rewards Earned</p>
-              <p className="text-3xl font-bold">15</p>
+              <p className="text-amber-100 text-sm font-medium">Rewards Earned</p>
+              <p className="text-4xl font-bold mt-2">15</p>
             </div>
-            <Trophy className="w-8 h-8 text-amber-200" />
+            <div className="p-3 bg-white/20 rounded-xl backdrop-blur-sm">
+              <Trophy className="w-8 h-8 text-white" />
+            </div>
           </div>
-          <div className="mt-3 text-amber-100 text-sm">
-            3 available to redeem
+          <div className="flex items-center gap-2 mt-4">
+            <div className="px-3 py-1 bg-white/20 rounded-full backdrop-blur-sm">
+              <span className="text-amber-100 text-sm font-medium">3 available</span>
+            </div>
           </div>
         </CardContent>
       </Card>
