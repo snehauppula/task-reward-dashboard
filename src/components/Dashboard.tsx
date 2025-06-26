@@ -285,37 +285,6 @@ export const Dashboard = () => {
           </CardContent>
         </Card>
       </div>
-
-      {/* Quick Actions */}
-      <Card>
-        <CardHeader>
-          <CardTitle>Quick Insights</CardTitle>
-        </CardHeader>
-        <CardContent>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <div className="text-center p-4 bg-blue-50 rounded-lg">
-              <div className="text-2xl font-bold text-blue-600">
-                {Math.round((completedTasks.length / tasks.length) * 100) || 0}%
-              </div>
-              <div className="text-sm text-blue-700">Overall Completion Rate</div>
-            </div>
-            
-            <div className="text-center p-4 bg-green-50 rounded-lg">
-              <div className="text-2xl font-bold text-green-600">
-                {completedTasks.reduce((sum, task) => sum + task.points, 0)}
-              </div>
-              <div className="text-sm text-green-700">Points from Completed Tasks</div>
-            </div>
-            
-            <div className="text-center p-4 bg-purple-50 rounded-lg">
-              <div className="text-2xl font-bold text-purple-600">
-                {Math.round(goals.reduce((sum, goal) => sum + (goal.progress / goal.target) * 100, 0) / goals.length) || 0}%
-              </div>
-              <div className="text-sm text-purple-700">Average Goal Progress</div>
-            </div>
-          </div>
-        </CardContent>
-      </Card>
     </div>
   );
 };
