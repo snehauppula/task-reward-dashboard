@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -10,10 +9,9 @@ import { WeeklyGoals } from '@/components/WeeklyGoals';
 import { RewardSystem } from '@/components/RewardSystem';
 import { Dashboard } from '@/components/Dashboard';
 import { TaskProvider, useTaskContext } from '@/contexts/TaskContext';
-import { Trophy, Target, Calendar, Star, Sparkles, Brain, Bell, Database } from 'lucide-react';
+import { Trophy, Target, Calendar, Star, Sparkles, Brain, Bell } from 'lucide-react';
 import { ProductivityInsights } from '@/components/ProductivityInsights';
 import { SmartReminders } from '@/components/SmartReminders';
-import { DataManager } from '@/components/DataManager';
 
 const Index = () => {
   return (
@@ -40,7 +38,7 @@ const Index = () => {
 
           {/* Main Content */}
           <Tabs defaultValue="tasks" className="mt-12">
-            <TabsList className="grid w-full grid-cols-7 mb-8 h-14 bg-white/80 backdrop-blur-sm shadow-lg border-0 rounded-2xl p-2">
+            <TabsList className="grid w-full grid-cols-6 mb-8 h-14 bg-white/80 backdrop-blur-sm shadow-lg border-0 rounded-2xl p-2">
               <TabsTrigger 
                 value="tasks" 
                 className="flex items-center gap-2 rounded-xl font-medium data-[state=active]:bg-gradient-to-r data-[state=active]:from-blue-500 data-[state=active]:to-blue-600 data-[state=active]:text-white data-[state=active]:shadow-md transition-all duration-200"
@@ -83,13 +81,6 @@ const Index = () => {
                 <Bell className="w-4 h-4" />
                 Reminders
               </TabsTrigger>
-              <TabsTrigger 
-                value="data" 
-                className="flex items-center gap-2 rounded-xl font-medium data-[state=active]:bg-gradient-to-r data-[state=active]:from-gray-500 data-[state=active]:to-gray-600 data-[state=active]:text-white data-[state=active]:shadow-md transition-all duration-200"
-              >
-                <Database className="w-4 h-4" />
-                Data
-              </TabsTrigger>
             </TabsList>
 
             <TabsContent value="tasks" className="mt-0">
@@ -114,10 +105,6 @@ const Index = () => {
 
             <TabsContent value="reminders" className="mt-0">
               <SmartReminders />
-            </TabsContent>
-
-            <TabsContent value="data" className="mt-0">
-              <DataManager />
             </TabsContent>
           </Tabs>
         </div>
