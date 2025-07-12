@@ -9,8 +9,7 @@ import { WeeklyGoals } from '@/components/WeeklyGoals';
 import { RewardSystem } from '@/components/RewardSystem';
 import { Dashboard } from '@/components/Dashboard';
 import { TaskProvider, useTaskContext } from '@/contexts/TaskContext';
-import { Trophy, Target, Calendar, Star, Sparkles, Brain, Bell } from 'lucide-react';
-import { ProductivityInsights } from '@/components/ProductivityInsights';
+import { Trophy, Target, Calendar, Star, Sparkles, Bell } from 'lucide-react';
 import { SmartReminders } from '@/components/SmartReminders';
 
 const Index = () => {
@@ -38,7 +37,7 @@ const Index = () => {
 
           {/* Main Content */}
           <Tabs defaultValue="tasks" className="mt-12">
-            <TabsList className="grid w-full grid-cols-6 mb-8 h-14 bg-white/80 backdrop-blur-sm shadow-lg border-0 rounded-2xl p-2">
+            <TabsList className="grid w-full grid-cols-5 mb-8 h-14 bg-white/80 backdrop-blur-sm shadow-lg border-0 rounded-2xl p-2">
               <TabsTrigger 
                 value="tasks" 
                 className="flex items-center gap-2 rounded-xl font-medium data-[state=active]:bg-gradient-to-r data-[state=active]:from-blue-500 data-[state=active]:to-blue-600 data-[state=active]:text-white data-[state=active]:shadow-md transition-all duration-200"
@@ -68,13 +67,6 @@ const Index = () => {
                 Dashboard
               </TabsTrigger>
               <TabsTrigger 
-                value="insights" 
-                className="flex items-center gap-2 rounded-xl font-medium data-[state=active]:bg-gradient-to-r data-[state=active]:from-pink-500 data-[state=active]:to-purple-500 data-[state=active]:text-white data-[state=active]:shadow-md transition-all duration-200"
-              >
-                <Brain className="w-4 h-4" />
-                Insights
-              </TabsTrigger>
-              <TabsTrigger 
                 value="reminders" 
                 className="flex items-center gap-2 rounded-xl font-medium data-[state=active]:bg-gradient-to-r data-[state=active]:from-indigo-500 data-[state=active]:to-blue-500 data-[state=active]:text-white data-[state=active]:shadow-md transition-all duration-200"
               >
@@ -97,10 +89,6 @@ const Index = () => {
 
             <TabsContent value="dashboard" className="mt-0">
               <Dashboard />
-            </TabsContent>
-
-            <TabsContent value="insights" className="mt-0">
-              <ProductivityInsights />
             </TabsContent>
 
             <TabsContent value="reminders" className="mt-0">
